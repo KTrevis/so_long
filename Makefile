@@ -1,6 +1,6 @@
 NAME = so_long
 
-C_FILES = main.c input.c parse_map.c
+C_FILES = main.c input.c parse_map.c check_map.c
 SRCS = $(addprefix srcs/,$(C_FILES))
 
 CFLAGS = -Wall -Wextra -Werror
@@ -16,10 +16,12 @@ $(NAME):
 	make -C libs/libft
 	cc $(SRCS) -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
 
-fclean:
+clean:
+	make -C libs/mlx clean
+	make -C libs/ft_printf clean
+	make -C libs/libft clean
+
+fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-	make -C libs/mlx re
-	make -C libs/ft_printf re
-	make -C libs/libft re

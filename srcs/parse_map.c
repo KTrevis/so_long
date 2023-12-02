@@ -6,16 +6,13 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 15:46:31 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:13:28 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "so_long.h"
-#include <stdio.h>
 
-char	**store_file(int fd)
+static char	**store_file(int fd)
 {
 	char	*buffer;
 	char	*tmp;
@@ -36,14 +33,13 @@ char	**store_file(int fd)
 		file = ft_strjoin(file, buffer);
 		free(tmp);
 	}
-	free(buffer);
-	close(fd);
 	split = ft_split(file, '\n');
 	free(file);
+	free(buffer);
 	return (split);
 }
 
-int	parse_map(char *path)
+static char	**open_file(char *path)
 {
 	int		fd;
 	char	**map;
@@ -51,12 +47,21 @@ int	parse_map(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error\n");
-		perror(NULL);
+		perror("Error\nReason");
 		exit(0);
 	}
 	map = store_file(fd);
+	close(fd);
+	return (map);
+}
+
+int	parse_map(char *path)
+{
+	char	**map;
+
+	map = open_file(path);
 	if (!map)
-		return (-1);
-	return (0);
+		return (0);
+	check_map(map);
+	return (1);
 }

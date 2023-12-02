@@ -6,13 +6,12 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 15:49:16 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:16:37 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "so_long.h"
-#include <stdio.h>
 
 static void	init_game(t_game *game)
 {
@@ -56,8 +55,7 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
-	if (args_invalid(ac, av))
-		return (0);	
-	parse_map(av[1]);
+	if (args_invalid(ac, av) || !parse_map(av[1]))
+		return (0);
 	init_game(&game);
 }
