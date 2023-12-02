@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_uppercase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 13:25:17 by ketrevis         ###   ########.fr       */
+/*   Created: 2023/10/31 15:07:01 by ketrevis          #+#    #+#             */
+/*   Updated: 2023/10/31 15:07:07 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <stdlib.h>
 #include "ft_printf.h"
-#include "libft.h"
-#include "mlx.h"
 
-typedef struct	s_game {
-	void	*mlx;
-	void	*window;
-}	t_game;
+char	ft_uppercase_char(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
 
-enum {
-	KEY_ESC = 65307,
-};
+char	*ft_uppercase_str(char *str)
+{
+	int	i;
 
-int	handle_input(int keycode, t_game *game);
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_uppercase_char(str[i]);
+		i++;
+	}
+	return (str);
+}

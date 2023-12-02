@@ -1,25 +1,18 @@
 NAME = so_long
 
-C_FILES = main.c
+C_FILES = main.c input.c
 SRCS = $(addprefix srcs/,$(C_FILES))
-OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	cc $(CFLAGS) $(OBJS) -Lmlx -lmlx -Imlx -lXext -lX11 -lm -lz -o $(NAME) ft_printf/libftprintf.a
+$(NAME):
+	make -C libs/mlx
+	make -C libs/ft_printf
+	cc $(CFLAGS) $(SRCS) -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) libs/ft_printf/libftprintf.a
 
-$(OBJS): $(SRCS)
-	make -C mlx
-	make -C ft_printf
-	cc $(CFLAGS) -I includes -O3 -c $(SRCS) -o $(OBJS)
-
-clean:
-	rm -f $(OBJS)
-
-fclean: clean
+fclean:
 	rm -f $(NAME)
 
 re: fclean all

@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 13:25:17 by ketrevis         ###   ########.fr       */
+/*   Created: 2023/10/31 15:07:13 by ketrevis          #+#    #+#             */
+/*   Updated: 2023/11/01 10:37:13 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <stdlib.h>
 #include "ft_printf.h"
-#include "libft.h"
-#include "mlx.h"
 
-typedef struct	s_game {
-	void	*mlx;
-	void	*window;
-}	t_game;
+int	ft_putstr_len(char *str)
+{
+	int	i;
 
-enum {
-	KEY_ESC = 65307,
-};
-
-int	handle_input(int keycode, t_game *game);
-
-#endif
+	if (!str)
+		return (ft_putstr_len("(null)"));
+	i = 0;
+	while (str[i])
+		ft_putchar_len(str[i++]);
+	return (i);
+}
