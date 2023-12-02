@@ -1,6 +1,6 @@
 NAME = so_long
 
-C_FILES = main.c input.c
+C_FILES = main.c input.c parse_map.c
 SRCS = $(addprefix srcs/,$(C_FILES))
 
 CFLAGS = -Wall -Wextra -Werror
