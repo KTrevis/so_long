@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 14:18:57 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:43:25 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ typedef struct	s_game {
 	void	*mlx;
 	void	*window;
 }	t_game;
-
-enum map_parsing {
-	OPEN_FAILED = -1
-};
 
 enum keys {
 	KEY_ESC = 65307,

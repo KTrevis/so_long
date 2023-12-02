@@ -13,9 +13,13 @@ all: $(NAME)
 $(NAME):
 	make -C libs/mlx
 	make -C libs/ft_printf
-	cc $(CFLAGS) $(SRCS) -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
+	make -C libs/libft
+	cc $(SRCS) -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
 
 fclean:
 	rm -f $(NAME)
 
 re: fclean all
+	make -C libs/mlx re
+	make -C libs/ft_printf re
+	make -C libs/libft re

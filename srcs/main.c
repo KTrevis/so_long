@@ -6,12 +6,13 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 14:31:47 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:49:16 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "so_long.h"
+#include <stdio.h>
 
 static void	init_game(t_game *game)
 {
@@ -34,11 +35,20 @@ static int	map_extension_invalid(char *path)
 static int	args_invalid(int ac, char **av)
 {
 	if (ac < 2)
-		return (ft_printf("No path given as argument."));
+	{
+		printf("Error.\nNo path given as argument");
+		return (1);
+	}
 	if (ac > 2)
-		return (ft_printf("Too many arguments."));
+	{
+		printf("Error.\nToo many arguments");
+		return (1);
+	}
 	if (map_extension_invalid(av[1]))
-		return (ft_printf("Map extension invalid"));
+	{
+		printf("Error.\nMap extension invalid");
+		return (1);
+	}
 	return (0);
 }
 
