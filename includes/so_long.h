@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 16:57:25 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:02:58 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ enum keys {
 int	handle_input(int keycode, t_game *game);
 int	parse_map(char *path);
 void	check_map(char **map);
-
+void	check_surrounding_walls(char **map);
 void	quit_game(t_game *game);
 
 #endif

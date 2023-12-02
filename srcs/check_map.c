@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 17:13:57 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:03:25 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	check_map(char **map)
 {
 	check_rectangle(map);
 	check_components(store_components(map));
+	check_surrounding_walls(map);
 	free_split(map);
 }
