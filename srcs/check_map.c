@@ -6,11 +6,14 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 19:03:25 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:07:36 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+#include "libft.h"
 #include "so_long.h"
+#include <stdio.h>
 
 void	check_rectangle(char **map)
 {
@@ -18,12 +21,14 @@ void	check_rectangle(char **map)
 	int	n;
 
 	i = 0;
-	n = ft_strlen(map[i++]);
+	n = ft_strlen(map[i]);
+	i++;
 	while (map[i])
 	{
-		if (ft_strlen(map[i]) > n)
+		if (ft_strlen(map[i]) != n)
 		{
 			ft_printf("Error\nMap is not rectangular");
+			free_split(map);
 			exit(0);
 		}
 		i++;
@@ -95,5 +100,4 @@ void	check_map(char **map)
 	check_rectangle(map);
 	check_components(store_components(map));
 	check_surrounding_walls(map);
-	free_split(map);
 }

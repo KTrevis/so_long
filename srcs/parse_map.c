@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 17:13:28 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:13:01 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,18 @@ static char	**open_file(char *path)
 	if (fd < 0)
 	{
 		perror("Error\nReason");
-		exit(0);
+		return (NULL);
 	}
 	map = store_file(fd);
 	close(fd);
 	return (map);
 }
 
-int	parse_map(char *path)
+int	parse_map(char *path, t_game *game)
 {
-	char	**map;
-
-	map = open_file(path);
-	if (!map)
+	game->map = open_file(path);
+	if (!game->map)
 		return (0);
-	check_map(map);
+	check_map(game->map);
 	return (1);
 }
