@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 16:05:52 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:13:31 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,20 @@ static void	init_game(t_game *game)
 	int	x;
 
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, ft_strlen(game->map[0]) * 32, map_height(game->map) * 32, "");
-	game->img.wall = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &x, &x);
-	game->img.floor = mlx_xpm_file_to_image(game->mlx, "assets/floor.xpm", &x, &x);
-	game->img.player = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", &x, &x);
-	game->img.key = mlx_xpm_file_to_image(game->mlx, "assets/key.xpm", &x, &x);
-	game->img.exit = mlx_xpm_file_to_image(game->mlx, "assets/exit.xpm", &x, &x);
+	game->window = mlx_new_window(game->mlx, ft_strlen(game->map[0]) * 32,
+			map_height(game->map) * 32, "");
+	game->img.wall = mlx_xpm_file_to_image(
+			game->mlx, "assets/wall.xpm", &x, &x);
+	game->img.floor = mlx_xpm_file_to_image(
+			game->mlx, "assets/floor.xpm", &x, &x);
+	game->img.player = mlx_xpm_file_to_image(
+			game->mlx, "assets/player.xpm", &x, &x);
+	game->img.key = mlx_xpm_file_to_image(
+			game->mlx, "assets/key.xpm", &x, &x);
+	game->img.exit = mlx_xpm_file_to_image(
+			game->mlx, "assets/exit.xpm", &x, &x);
+	game->player.keys = 0;
+	game->player.moves = 0;
 	draw_map(game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, handle_input, game);
 	mlx_loop(game->mlx);

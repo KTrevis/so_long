@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:02:56 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 16:06:51 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:11:29 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 
 void	pick_texture(char c, int i, int j, t_game *game)
 {
-	mlx_put_image_to_window(game->mlx, game->window, game->img.floor, j * 32, i * 32);
+	draw_floor(game, j, i);
 	if (c == '1')
-		mlx_put_image_to_window(game->mlx, game->window, game->img.wall, j * 32, i * 32);
+		draw_wall(game, j, i);
 	else if (c == 'C')
-		mlx_put_image_to_window(game->mlx, game->window, game->img.key, j * 32, i * 32);
+		draw_key(game, j, i);
 	else if (c == 'P')
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->img.player, j * 32, i * 32);
-		game->player.x = j * 32;
-		game->player.y = i * 32;
+		draw_player(game, j, i);
+		game->player.x = j;
+		game->player.y = i;
 	}
 	else if (c == 'E')
-		mlx_put_image_to_window(game->mlx, game->window, game->img.exit, j * 32, i * 32);
+		draw_exit(game, j, i);
 }
 
 void	draw_map(t_game *game)
@@ -43,7 +43,7 @@ void	draw_map(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			pick_texture(game->map[i][j], i, j, game);
+			pick_texture(game->map[i][j], i * 32, j * 32, game);
 			j++;
 		}
 		i++;

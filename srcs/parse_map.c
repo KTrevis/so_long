@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 15:13:01 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 16:51:07 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	parse_map(char *path, t_game *game)
 	game->map = open_file(path);
 	if (!game->map)
 		return (0);
-	check_map(game->map);
+	check_map(game);
 	return (1);
 }
