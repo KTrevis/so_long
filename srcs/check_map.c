@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 16:52:06 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:32:22 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,21 @@ void	check_components(t_components components, t_game *game)
 	if (components.keys == 0)
 		err = ft_printf("Error\nAt least one collectible should be present\n");
 	if (err)
+	{
+		free_split(game->map);
 		exit(0);
+	}
 	game->max_keys = components.keys;
 }
 
 void	check_map(t_game *game)
 {
+	if (map_height(game->map) < 5 || ft_strlen(game->map[0]) < 3)
+	{
+		ft_printf("Error\nMap too small");
+		free_split(game->map);
+		exit(0);
+	}
 	check_rectangle(game->map);
 	check_components(store_components(game->map), game);
 	check_surrounding_walls(game->map);
