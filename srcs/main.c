@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 17:28:48 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:29:31 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,10 @@ int	main(int ac, char **av)
 
 	if (args_invalid(ac, av) || !parse_map(av[1], &game))
 		return (0);
+	if (impossible_map(av[1], &game))
+	{
+		printf("Error\nNo valid path");
+		return (0);
+	}
 	init_game(&game);
 }

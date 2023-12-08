@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 17:08:30 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:50:01 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ typedef struct	s_player {
 	int	moves;
 }	t_player;
 
+typedef struct	s_coords {
+	int	x;
+	int	y;
+}	t_coords;
+
 typedef struct	s_game {
 	void	*mlx;
 	void	*window;
@@ -63,12 +68,16 @@ enum keys {
 int	handle_input(int keycode, t_game *game);
 int	parse_map(char *path, t_game *game);
 int	map_height(char **map);
+int	impossible_map(char *path, t_game *game);
+
+char	**open_file(char *path);
+char	**replace_objectives(char *path);
+t_coords	get_map_size(char **map);
 
 void	check_map(t_game *game);
 void	check_surrounding_walls(char **map);
 void	quit_game(t_game *game);
 void	draw_map(t_game *game);
-
 void	draw_exit(t_game *game, int x, int y);
 void	draw_player(t_game *game, int x, int y);
 void	draw_floor(t_game *game, int x, int y);

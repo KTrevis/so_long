@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/03 17:29:02 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:47:45 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char	**store_file(int fd)
 	return (split);
 }
 
-static char	**open_file(char *path)
+char	**open_file(char *path)
 {
 	int		fd;
 	char	**map;
