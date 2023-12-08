@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:50:31 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 15:50:07 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:51:43 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include "so_long.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 static t_coords	*objectives_coords(t_game *game)
 {
@@ -27,6 +28,8 @@ static t_coords	*objectives_coords(t_game *game)
 	i = 0;
 	k = 0;
 	arr = malloc((game->max_keys + 1) * sizeof(t_coords));
+	if (!arr)
+		return (NULL);
 	while (map[i])
 	{
 		j = 0;
@@ -101,6 +104,15 @@ static void	fill_map(char **map, t_coords size, t_coords spawn)
 	}
 }
 
+static int	free_things(char **map, t_game *game, t_coords *coords)
+{
+	if (coords)
+		free(coords);
+	if (map)
+		free_split(map);
+	return (1);
+}
+
 int	impossible_map(char *path, t_game *game)
 {
 	char		**map;
@@ -111,20 +123,21 @@ int	impossible_map(char *path, t_game *game)
 
 	i = 0;
 	player_spawn = get_spawn(game->map);
-	coords = objectives_coords(game);
 	map_size = get_map_size(game->map);
+	coords = objectives_coords(game);
 	map = replace_objectives(path);
+	if (!map || !coords)
+		return (free_things(map, game, coords));
 	fill_map(map, map_size, player_spawn);
 	while (i < game->max_keys + 1)
 	{
 		if (map[coords[i].y][coords[i].x] == '0')
 		{
-			free_split(map);
-			free(coords);
 			free_split(game->map);
-			return (1);
+			return (free_things(map, game, coords));
 		}
 		i++;
 	}
+	free_things(map, game, coords);
 	return (0);
 }
