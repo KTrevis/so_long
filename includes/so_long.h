@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 15:50:01 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:57:46 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@ int	impossible_map(char *path, t_game *game);
 
 char	**open_file(char *path);
 char	**replace_objectives(char *path);
+char	**replace_objectives(char *path);
+
 t_coords	get_map_size(char **map);
+t_coords	get_spawn(char **map);
+t_coords	*objectives_coords(t_game *game);
 
 void	check_map(t_game *game);
 void	check_surrounding_walls(char **map);
