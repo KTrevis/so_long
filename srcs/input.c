@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:32:53 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:37:59 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,13 @@ void	display_moves(t_game *game)
 	n = game->player.moves;
 	while (n >= 10)
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->img.numbers[n % 10], (len - 1) * 32, 0);
+		mlx_put_image_to_window(game->mlx, game->window,
+			game->img.numbers[n % 10], (len - 1) * 32, 0);
 		n /= 10;
 		len--;
 	}
-	mlx_put_image_to_window(game->mlx, game->window, game->img.numbers[n % 10], 0, 0);
+	mlx_put_image_to_window(
+		game->mlx, game->window, game->img.numbers[n % 10], 0, 0);
 }
 
 int	handle_input(int keycode, t_game *game)
