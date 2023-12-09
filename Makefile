@@ -17,7 +17,6 @@ $(NAME):
 	cc $(SRCS) -g3 -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
 
 clean:
-	make -C libs/mlx clean
 	make -C libs/ft_printf clean
 	make -C libs/libft clean
 

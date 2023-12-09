@@ -6,14 +6,13 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/05 17:24:14 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:04:16 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 #include "so_long.h"
-#include <stdio.h>
 
 void	check_rectangle(char **map)
 {
@@ -27,7 +26,7 @@ void	check_rectangle(char **map)
 	{
 		if (ft_strlen(map[i]) != n)
 		{
-			ft_printf("Error\nMap is not rectangular");
+			ft_printf("Error\nMap is not rectangular\n");
 			free_split(map);
 			exit(0);
 		}
@@ -101,9 +100,9 @@ void	check_components(t_components components, t_game *game)
 
 void	check_map(t_game *game)
 {
-	if (map_height(game->map) < 5 || ft_strlen(game->map[0]) < 3)
+	if (game->map[0] == NULL)
 	{
-		ft_printf("Error\nMap too small");
+		ft_printf("Error.\nEmpty map\n");
 		free_split(game->map);
 		exit(0);
 	}

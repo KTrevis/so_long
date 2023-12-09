@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 15:29:31 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:55:53 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,24 @@ static int	map_extension_invalid(char *path)
 	i = ft_strlen(path) - 1;
 	while (i >= 0 && path[i] != '.')
 		i--;
-	return (ft_strncmp(".ber", path + i, ft_strlen(path + i)));
+	return (ft_strncmp(".ber", path + i, 4));
 }
 
 static int	args_invalid(int ac, char **av)
 {
 	if (ac < 2)
 	{
-		printf("Error.\nNo path given as argument");
+		ft_printf("Error.\nNo path given as argument\n");
 		return (1);
 	}
 	if (ac > 2)
 	{
-		printf("Error.\nToo many arguments");
+		ft_printf("Error.\nToo many arguments\n");
 		return (1);
 	}
 	if (map_extension_invalid(av[1]))
 	{
-		printf("Error.\nMap extension invalid");
+		ft_printf("Error.\nMap extension invalid\n");
 		return (1);
 	}
 	return (0);

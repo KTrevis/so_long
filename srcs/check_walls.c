@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 17:18:22 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/02 19:23:40 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:50:41 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	check_surrounding_walls(char **map)
 	{
 		if (line_is_invalid(map, i))
 		{
-			ft_printf("Error\nMap is not surrounded by walls");
+			ft_printf("Error\nMap is not surrounded by walls\n");
 			free_split(map);
 			exit(0);
 		}

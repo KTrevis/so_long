@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:48:35 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/11/23 17:47:55 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:56:12 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,4 @@ int	ft_atoi(const char *str)
 		str++;
 	}
 	return (n * sign);
-}
-
-#include <stdio.h>
-
-int	main() {
-	printf("%d", ft_atoi("123"));
 }
