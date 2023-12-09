@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:46:16 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:53:29 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void	display_moves(t_game *game)
 	x = 0;
 	i = 0;
 	str = ft_itoa(game->player.moves);
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		mlx_put_image_to_window(
