@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 11:31:08 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:32:53 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,20 @@
 
 void	quit_game(t_game *game)
 {
+	int	i;
+
+	i = 0;
 	mlx_destroy_image(game->mlx, game->img.wall);
 	mlx_destroy_image(game->mlx, game->img.player);
 	mlx_destroy_image(game->mlx, game->img.floor);
 	mlx_destroy_image(game->mlx, game->img.exit);
 	mlx_destroy_image(game->mlx, game->img.key);
+	while (i <= 9)
+	{
+		mlx_destroy_image(game->mlx, game->img.numbers[i]);
+		i++;
+	}
+	free(game->img.numbers);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free_split(game->map);
@@ -75,6 +84,28 @@ int	handle_key(int keycode, t_game *game)
 	return (1);
 }
 
+void	display_moves(t_game *game)
+{
+	int	len;
+	int	n;
+
+	len = 1;
+	n = game->player.moves;
+	while (n >= 10)
+	{
+		n /= 10;
+		len++;
+	}
+	n = game->player.moves;
+	while (n >= 10)
+	{
+		mlx_put_image_to_window(game->mlx, game->window, game->img.numbers[n % 10], (len - 1) * 32, 0);
+		n /= 10;
+		len--;
+	}
+	mlx_put_image_to_window(game->mlx, game->window, game->img.numbers[n % 10], 0, 0);
+}
+
 int	handle_input(int keycode, t_game *game)
 {
 	int	old_coordinates[2];
@@ -89,5 +120,6 @@ int	handle_input(int keycode, t_game *game)
 	else
 		draw_target(game, old_coordinates[0], old_coordinates[1], "floor");
 	draw_target(game, game->player.x, game->player.y, "player");
+	display_moves(game);
 	return (0);
 }

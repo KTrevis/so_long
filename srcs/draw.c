@@ -6,10 +6,11 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 17:04:31 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 11:32:35 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:33:02 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "mlx.h"
 #include "so_long.h"
 

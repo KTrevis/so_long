@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 11:32:23 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:32:58 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_img {
 	void	*floor;
 	void	*key;
 	void	*exit;
+	void	**numbers;
 }	t_img;
 
 typedef struct	s_player {

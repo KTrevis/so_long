@@ -6,11 +6,39 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 11:25:57 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:17:33 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx.h"
 #include "so_long.h"
+
+static void	load_numbers(t_game *game)
+{
+	int	x;
+
+	game->img.numbers = malloc(10 * sizeof(void *));
+	game->img.numbers[0] = mlx_xpm_file_to_image(
+			game->mlx, "assets/zero.xpm", &x, &x);
+	game->img.numbers[1] = mlx_xpm_file_to_image(
+			game->mlx, "assets/one.xpm", &x, &x);
+	game->img.numbers[2] = mlx_xpm_file_to_image(
+			game->mlx, "assets/two.xpm", &x, &x);
+	game->img.numbers[3] = mlx_xpm_file_to_image(
+			game->mlx, "assets/three.xpm", &x, &x);
+	game->img.numbers[4] = mlx_xpm_file_to_image(
+			game->mlx, "assets/four.xpm", &x, &x);
+	game->img.numbers[5] = mlx_xpm_file_to_image(
+			game->mlx, "assets/five.xpm", &x, &x);
+	game->img.numbers[6] = mlx_xpm_file_to_image(
+			game->mlx, "assets/six.xpm", &x, &x);
+	game->img.numbers[7] = mlx_xpm_file_to_image(
+			game->mlx, "assets/seven.xpm", &x, &x);
+	game->img.numbers[8] = mlx_xpm_file_to_image(
+			game->mlx, "assets/eight.xpm", &x, &x);
+	game->img.numbers[9] = mlx_xpm_file_to_image(
+			game->mlx, "assets/nine.xpm", &x, &x);
+}
 
 static void	init_game(t_game *game)
 {
@@ -31,6 +59,7 @@ static void	init_game(t_game *game)
 			game->mlx, "assets/exit.xpm", &x, &x);
 	game->player.keys = 0;
 	game->player.moves = 0;
+	load_numbers(game);
 	draw_map(game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, handle_input, game);
 	mlx_loop(game->mlx);
