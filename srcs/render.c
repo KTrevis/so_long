@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:02:56 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/04 17:09:28 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:32:07 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 
 void	pick_texture(char c, int i, int j, t_game *game)
 {
-	draw_floor(game, j, i);
+	draw_target(game, j, i, "floor");
 	if (c == '1')
-		draw_wall(game, j, i);
+		draw_target(game, j, i, "wall");
 	else if (c == 'C')
-		draw_key(game, j, i);
+		draw_target(game, j, i, "key");
 	else if (c == 'P')
 	{
-		draw_player(game, j, i);
+		draw_target(game, j, i, "player");
 		game->player.x = j;
 		game->player.y = i;
 	}
 	else if (c == 'E')
-		draw_exit(game, j, i);
+		draw_target(game, j, i, "exit");
 }
 
 void	draw_map(t_game *game)

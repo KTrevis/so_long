@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 16:57:46 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:32:23 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,6 @@ void	check_map(t_game *game);
 void	check_surrounding_walls(char **map);
 void	quit_game(t_game *game);
 void	draw_map(t_game *game);
-void	draw_exit(t_game *game, int x, int y);
-void	draw_player(t_game *game, int x, int y);
-void	draw_floor(t_game *game, int x, int y);
-void	draw_wall(t_game *game, int x, int y);
-void	draw_key(t_game *game, int x, int y);
+void	draw_target(t_game *game, int x, int y, char *target);
 
 #endif

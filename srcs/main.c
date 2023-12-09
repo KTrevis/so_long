@@ -6,13 +6,10 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 10:55:53 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 11:25:57 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
-#include "mlx.h"
 #include "so_long.h"
 
 static void	init_game(t_game *game)
@@ -46,7 +43,7 @@ static int	map_extension_invalid(char *path)
 	i = ft_strlen(path) - 1;
 	while (i >= 0 && path[i] != '.')
 		i--;
-	return (ft_strncmp(".ber", path + i, 4));
+	return (ft_strcmp(".ber", path + i));
 }
 
 static int	args_invalid(int ac, char **av)
