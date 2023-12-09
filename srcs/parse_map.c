@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 11:47:45 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 10:17:41 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static char	**store_file(int fd)
 	char	**split;
 	int		n;
 
-	buffer = malloc(101);
 	n = 1;
+	buffer = malloc(101);
+	if (!buffer)
+		return (NULL);
 	file = ft_strdup("");
 	if (!file)
-		return (NULL);
+		return (free(buffer), NULL);
 	while (n)
 	{
 		n = read(fd, buffer, 100);
@@ -32,11 +34,11 @@ static char	**store_file(int fd)
 		tmp = file;
 		file = ft_strjoin(file, buffer);
 		free(tmp);
+		if (!file)
+			return (free(buffer), NULL);
 	}
 	split = ft_split(file, '\n');
-	free(file);
-	free(buffer);
-	return (split);
+	return (free(file), free(buffer), split);
 }
 
 char	**open_file(char *path)
