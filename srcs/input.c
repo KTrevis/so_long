@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:45:19 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:46:16 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,16 @@ int	handle_key(int keycode, t_game *game)
 void	display_moves(t_game *game)
 {
 	char	*str;
-	int	i;
-	int	x;
+	int		i;
+	int		x;
 
 	x = 0;
 	i = 0;
 	str = ft_itoa(game->player.moves);
 	while (str[i])
 	{
-		mlx_put_image_to_window(game->mlx, game->window, game->img.numbers[str[i] - '0'], x, 0);
+		mlx_put_image_to_window(
+			game->mlx, game->window, game->img.numbers[str[i] - '0'], x, 0);
 		x += 32;
 		i++;
 	}
