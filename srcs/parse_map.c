@@ -6,11 +6,31 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 10:17:41 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:22:02 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "so_long.h"
+
+void	check_empty_lines(char *str, char *buffer, int fd)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '\n' && (i == 0 || str[i - 1] == '\n'))
+		{
+			ft_printf("Error.\nEmpty lines in file\n");
+			free(buffer);
+			free(str);
+			close(fd);
+			exit(0);
+		}
+		i++;
+	}
+}
 
 static char	**store_file(int fd)
 {
@@ -37,6 +57,7 @@ static char	**store_file(int fd)
 		if (!file)
 			return (free(buffer), NULL);
 	}
+	check_empty_lines(file, buffer, fd);
 	split = ft_split(file, '\n');
 	return (free(file), free(buffer), split);
 }
@@ -56,6 +77,7 @@ char	**open_file(char *path)
 	close(fd);
 	return (map);
 }
+
 
 int	parse_map(char *path, t_game *game)
 {

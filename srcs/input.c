@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:54:37 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:06:44 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	quit_game(t_game *game)
 	mlx_destroy_image(game->mlx, game->img.floor);
 	mlx_destroy_image(game->mlx, game->img.exit);
 	mlx_destroy_image(game->mlx, game->img.key);
+	mlx_destroy_image(game->mlx, game->img.enemy);
 	while (i <= 9)
 		mlx_destroy_image(game->mlx, game->img.numbers[i++]);
 	free(game->img.numbers);

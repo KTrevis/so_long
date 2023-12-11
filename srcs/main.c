@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:17:33 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:24:18 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static void	init_game(t_game *game)
 			game->mlx, "assets/key.xpm", &x, &x);
 	game->img.exit = mlx_xpm_file_to_image(
 			game->mlx, "assets/exit.xpm", &x, &x);
+	game->img.enemy = mlx_xpm_file_to_image(
+			game->mlx, "assets/enemy.xpm", &x, &x);
 	game->player.keys = 0;
 	game->player.moves = 0;
 	load_numbers(game);

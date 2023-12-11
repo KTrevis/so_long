@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 13:32:58 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:28:12 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_img {
 	void	*floor;
 	void	*key;
 	void	*exit;
+	void	*enemy;
 	void	**numbers;
 }	t_img;
 
@@ -35,7 +36,7 @@ typedef struct	s_player {
 	int	x;
 	int	y;
 	int	keys;
-	int	moves;
+	unsigned long int	moves;
 }	t_player;
 
 typedef struct	s_coords {
@@ -50,6 +51,7 @@ typedef struct	s_game {
 	char	**map;
 	t_img	img;
 	t_player	player;
+	t_coords	*enemies;
 }	t_game;
 
 typedef struct	s_components {
