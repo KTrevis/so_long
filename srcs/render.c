@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:02:56 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 14:08:45 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:38:46 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_target(t_game *game, int x, int y, char *target)
 {
 	if (!ft_strcmp(target, "player"))
 		mlx_put_image_to_window(
-				game->mlx, game->window, game->img.player, x, y);
+			game->mlx, game->window, game->img.player, x, y);
 	else if (!ft_strcmp(target, "floor"))
 		mlx_put_image_to_window(game->mlx, game->window, game->img.floor, x, y);
 	else if (!ft_strcmp(target, "wall"))
@@ -65,4 +65,3 @@ void	draw_map(t_game *game)
 		i++;
 	}
 }
-

@@ -6,14 +6,14 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:14:55 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 12:22:02 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:39:02 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "so_long.h"
 
-void	check_empty_lines(char *str, char *buffer, int fd)
+char	**check_empty_lines(char *str, char *buffer, int fd)
 {
 	int		i;
 
@@ -30,6 +30,7 @@ void	check_empty_lines(char *str, char *buffer, int fd)
 		}
 		i++;
 	}
+	return (ft_split(str, '\n'));
 }
 
 static char	**store_file(int fd)
@@ -57,8 +58,7 @@ static char	**store_file(int fd)
 		if (!file)
 			return (free(buffer), NULL);
 	}
-	check_empty_lines(file, buffer, fd);
-	split = ft_split(file, '\n');
+	split = check_empty_lines(file, buffer, fd);
 	return (free(file), free(buffer), split);
 }
 
@@ -77,7 +77,6 @@ char	**open_file(char *path)
 	close(fd);
 	return (map);
 }
-
 
 int	parse_map(char *path, t_game *game)
 {
