@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 16:27:41 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:37:27 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	quit_game(t_game *game)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	mlx_destroy_image(game->mlx, game->img.wall);
@@ -45,8 +45,6 @@ int	handle_key(int keycode, t_game *game)
 		game->player.x -= 32;
 	else if (keycode == KEY_D)
 		game->player.x += 32;
-	else
-		return (0);
 	return (1);
 }
 
@@ -81,10 +79,10 @@ int	handle_input(int keycode, t_game *game)
 		return (0);
 	wall_collision(game, old_coordinates);
 	key_collision(game, old_coordinates);
+	enemy_collision(game);
+	draw_target(game, old_coordinates[0], old_coordinates[1], "floor");
 	if (game->map[old_coordinates[1] / 32][old_coordinates[0] / 32] == 'E')
 		draw_target(game, old_coordinates[0], old_coordinates[1], "exit");
-	else
-		draw_target(game, old_coordinates[0], old_coordinates[1], "floor");
 	draw_target(game, game->player.x, game->player.y, "player");
 	display_moves(game);
 	return (0);

@@ -6,10 +6,11 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:16:44 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 15:53:42 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:22:02 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "so_long.h"
 
 void	wall_collision(t_game *game, int *old_coordinates)
@@ -40,6 +41,17 @@ void	key_collision(t_game *game, int *old_coordinates)
 	{
 		ft_printf("Fini en %d coups\n", game->player.moves);
 		quit_game(game);
-		exit(0);
+	}
+}
+
+void	enemy_collision(t_game *game)
+{
+	char	collider;
+
+	collider = game->map[game->player.y / 32][game->player.x / 32];
+	if (collider == 'V' || collider == 'H')
+	{
+		ft_printf("YOU DIEDED\n");
+		quit_game(game);
 	}
 }

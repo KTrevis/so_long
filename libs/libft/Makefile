@@ -61,7 +61,7 @@ bonus:          ${OBJS_BONUS}
 	ar rc ${NAME} ${OBJS_BONUS}
 
 .c.o:
-	gcc ${CFLAGS} -c $^ -include ${HEADER}
+	cc ${CFLAGS} -c $^ -include ${HEADER}
 
 clean:
 	rm -rf ${OBJS} ${OBJS_BONUS}
