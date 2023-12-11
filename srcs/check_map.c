@@ -6,12 +6,10 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/09 11:04:16 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 13:54:47 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "so_long.h"
 
 void	check_rectangle(char **map)
@@ -26,7 +24,7 @@ void	check_rectangle(char **map)
 	{
 		if (ft_strlen(map[i]) != n)
 		{
-			ft_printf("Error\nMap is not rectangular\n");
+			ft_printf("Error.\nMap is not rectangular\n");
 			free_split(map);
 			exit(0);
 		}
@@ -34,7 +32,23 @@ void	check_rectangle(char **map)
 	}
 }
 
-void	check_line(char *line, t_components *components)
+int	character_invalid(char c)
+{
+	char	*valids;
+	int		i;
+
+	i = 0;
+	valids = "01CPEVH";
+	while (valids[i])
+	{
+		if (valids[i] == c)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	check_line(char *line, t_components *components)
 {
 	int	i;
 
@@ -47,55 +61,14 @@ void	check_line(char *line, t_components *components)
 			components->spawns += 1;
 		else if (line[i] == 'E')
 			components->exits += 1;
-		else if (line[i] != '1' && line[i] != '0')
+		else if (character_invalid(line[i]))
 		{
-			ft_printf("Error\nAn invalid character is present in the map\n");
-			exit(0);
+			ft_printf("Error.\nAn invalid character is present in the map\n");
+			return (1);
 		}
 		i++;
 	}
-}
-
-t_components	store_components(char **map)
-{
-	int				i;
-	int				j;
-	t_components	components;
-
-	i = 0;
-	j = 0;
-	components.keys = 0;
-	components.spawns = 0;
-	components.exits = 0;
-	while (map[i])
-	{
-		check_line(map[i], &components);
-		i++;
-	}
-	return (components);
-}
-
-void	check_components(t_components components, t_game *game)
-{
-	int	err;
-
-	err = 0;
-	if (components.exits > 1)
-		err = ft_printf("Error\nOnly one exit should be present\n");
-	else if (components.exits == 0)
-		err = ft_printf("Error\nAn exit is missing\n");
-	if (components.spawns > 1)
-		err = ft_printf("Error\nOnly one spawn should be present\n");
-	else if (components.spawns == 0)
-		err = ft_printf("Error\nA spawn is missing\n");
-	if (components.keys == 0)
-		err = ft_printf("Error\nAt least one collectible should be present\n");
-	if (err)
-	{
-		free_split(game->map);
-		exit(0);
-	}
-	game->max_keys = components.keys;
+	return (0);
 }
 
 void	check_map(t_game *game)

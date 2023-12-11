@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 12:28:12 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:45:56 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ typedef struct	s_img {
 }	t_img;
 
 typedef struct	s_player {
-	int	x;
-	int	y;
-	int	keys;
-	unsigned long int	moves;
+	unsigned int	x;
+	unsigned int	y;
+	unsigned int	keys;
+	unsigned int	moves;
 }	t_player;
 
 typedef struct	s_coords {
-	int	x;
-	int	y;
+	unsigned int	x;
+	unsigned int	y;
 }	t_coords;
 
 typedef struct	s_game {
@@ -72,6 +72,7 @@ int	handle_input(int keycode, t_game *game);
 int	parse_map(char *path, t_game *game);
 int	map_height(char **map);
 int	impossible_map(char *path, t_game *game);
+int	check_line(char *line, t_components *components);
 
 char	**open_file(char *path);
 char	**replace_objectives(char *path);
@@ -81,10 +82,15 @@ t_coords	get_map_size(char **map);
 t_coords	get_spawn(char **map);
 t_coords	*objectives_coords(t_game *game);
 
-void	check_map(t_game *game);
-void	check_surrounding_walls(char **map);
-void	quit_game(t_game *game);
+t_components	store_components(char **map);
+
 void	draw_map(t_game *game);
+void	check_map(t_game *game);
+void	quit_game(t_game *game);
+void	check_surrounding_walls(char **map);
+void	key_collision(t_game *game, int *old_coordinates);
+void	wall_collision(t_game *game, int *old_coordinates);
 void	draw_target(t_game *game, int x, int y, char *target);
+void	check_components(t_components components, t_game *game);
 
 #endif

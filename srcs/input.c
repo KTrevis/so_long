@@ -6,13 +6,10 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 12:06:44 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:27:41 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
-#include "mlx.h"
 #include "so_long.h"
 
 void	quit_game(t_game *game)
@@ -34,35 +31,6 @@ void	quit_game(t_game *game)
 	free_split(game->map);
 	free(game->mlx);
 	exit(0);
-}
-
-int	collision_check(t_game *game, int *old_coordinates)
-{
-	char	collider;
-
-	collider = game->map[game->player.y / 32][game->player.x / 32];
-	if (collider != '1')
-	{
-		game->player.moves++;
-		ft_printf("%d\n", game->player.moves);
-	}
-	else
-	{
-		game->player.x = old_coordinates[0];
-		game->player.y = old_coordinates[1];
-	}
-	if (collider == 'C')
-	{
-		game->map[game->player.y / 32][game->player.x / 32] = '0';
-		game->player.keys++;
-	}
-	else if (collider == 'E' && game->player.keys == game->max_keys)
-	{
-		ft_printf("Fini en %d coups\n", game->player.moves);
-		quit_game(game);
-		exit(0);
-	}
-	return (collider);
 }
 
 int	handle_key(int keycode, t_game *game)
@@ -111,7 +79,8 @@ int	handle_input(int keycode, t_game *game)
 	old_coordinates[1] = game->player.y;
 	if (!handle_key(keycode, game))
 		return (0);
-	collision_check(game, old_coordinates);
+	wall_collision(game, old_coordinates);
+	key_collision(game, old_coordinates);
 	if (game->map[old_coordinates[1] / 32][old_coordinates[0] / 32] == 'E')
 		draw_target(game, old_coordinates[0], old_coordinates[1], "exit");
 	else
