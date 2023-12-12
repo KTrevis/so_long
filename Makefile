@@ -1,7 +1,7 @@
 NAME = so_long
 
 C_FILES = main.c input.c parse_map.c check_map.c check_walls.c render.c pathfinding.c \
-					pathfinding_parsing.c collision.c check_components.c \
+					pathfinding_parsing.c collision.c check_components.c enemies.c \
 
 SRCS = $(addprefix srcs/,$(C_FILES))
 

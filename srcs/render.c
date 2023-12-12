@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:02:56 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 16:38:46 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:40:58 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	pick_texture(char c, int i, int j, t_game *game)
 	}
 	else if (c == 'E')
 		draw_target(game, j, i, "exit");
-	else if (c == 'V')
+	else if (c == 'V' || c == 'H')
 		draw_target(game, j, i, "enemy");
 }
 

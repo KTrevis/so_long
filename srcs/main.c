@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 16:22:11 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:37:13 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static void	init_game(t_game *game)
 	game->player.keys = 0;
 	game->player.moves = 0;
 	load_numbers(game);
+	load_enemies(game);
 	draw_map(game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, handle_input, game);
 	mlx_hook(game->window, 33, 131072, (void *)quit_game, game);

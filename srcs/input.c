@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 17:37:27 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:04:49 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	quit_game(t_game *game)
 	while (i <= 9)
 		mlx_destroy_image(game->mlx, game->img.numbers[i++]);
 	free(game->img.numbers);
+	free(game->enemies);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free_split(game->map);
@@ -45,6 +46,8 @@ int	handle_key(int keycode, t_game *game)
 		game->player.x -= 32;
 	else if (keycode == KEY_D)
 		game->player.x += 32;
+	else
+		return (0);
 	return (1);
 }
 

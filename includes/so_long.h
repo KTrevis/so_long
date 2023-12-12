@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 17:19:20 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:47:35 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ void	wall_collision(t_game *game, int *old_coordinates);
 void	draw_target(t_game *game, int x, int y, char *target);
 void	check_components(t_components components, t_game *game);
 void	enemy_collision(t_game *game);
+void	load_enemies(t_game *game);
 
 #endif
