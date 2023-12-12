@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 11:47:35 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:13:37 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct	s_coords {
 typedef struct	s_game {
 	void	*mlx;
 	void	*window;
-	int		max_keys;
+	unsigned int		nbr_enemies;
+	unsigned int		max_keys;
 	char	**map;
 	t_img	img;
 	t_player	player;

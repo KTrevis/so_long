@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 12:19:44 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 14:49:53 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:51:18 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ unsigned int	number_of_enemies(t_game *game)
 		}
 		i++;
 	}
+	game->nbr_enemies = count;
 	return (count);
 }
 
@@ -49,8 +50,9 @@ void	store_enemies(t_game *game)
 		{
 			if (game->map[i][j] == 'V' || game->map[i][j] == 'H')
 			{
-				game->enemies[k].x = j;
-				game->enemies[k].y = i;
+				game->enemies[k].x = j * 32;
+				game->enemies[k].y = i * 32;
+				game->enemies[k].direction = 1;
 				game->enemies[k].orientation = game->map[i][j];
 				k++;
 			}
