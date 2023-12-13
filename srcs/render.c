@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:02:56 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 14:40:58 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:57 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw_map(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			pick_texture(game->map[i][j], i * 32, j * 32, game);
+			pick_texture(game->map[i][j], i * IMG_SIZE, j * IMG_SIZE, game);
 			j++;
 		}
 		i++;

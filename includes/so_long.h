@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 16:13:37 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:59:08 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,13 @@ typedef struct	s_components {
 	int	exits;
 }	t_components;
 
-enum keys {
+enum {
 	KEY_ESC = 65307,
 	KEY_W = 119,
 	KEY_S = 115,
 	KEY_A = 97,
-	KEY_D = 100
+	KEY_D = 100,
+	IMG_SIZE = 32,
 };
 
 int	handle_input(int keycode, t_game *game);
@@ -96,8 +97,8 @@ void	draw_map(t_game *game);
 void	check_map(t_game *game);
 void	quit_game(t_game *game);
 void	check_surrounding_walls(char **map);
-void	key_collision(t_game *game, int *old_coordinates);
-void	wall_collision(t_game *game, int *old_coordinates);
+void	key_collision(t_game *game);
+void	wall_collision(t_game *game, t_coords old_coords);
 void	draw_target(t_game *game, int x, int y, char *target);
 void	check_components(t_components components, t_game *game);
 void	enemy_collision(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 17:45:20 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:55:56 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,26 @@ static void	load_numbers(t_game *game, int *x)
 			game->mlx, "assets/nine.xpm", x, x);
 }
 
-static void	init_game(t_game *game, int *x)
+static void	init_game(t_game *game)
 {
+	int	x;
+
 	game->mlx = mlx_init();
-	game->window = mlx_new_window(game->mlx, ft_strlen(game->map[0]) * 32,
-			map_height(game->map) * 32, "");
+	game->window = mlx_new_window(game->mlx, ft_strlen(game->map[0]) * IMG_SIZE,
+			map_height(game->map) * IMG_SIZE, "");
 	game->img.wall = mlx_xpm_file_to_image(
-			game->mlx, "assets/wall.xpm", x, x);
+			game->mlx, "assets/wall.xpm", &x, &x);
 	game->img.floor = mlx_xpm_file_to_image(
-			game->mlx, "assets/floor.xpm", x, x);
+			game->mlx, "assets/floor.xpm", &x, &x);
 	game->img.player = mlx_xpm_file_to_image(
-			game->mlx, "assets/player.xpm", x, x);
+			game->mlx, "assets/player.xpm", &x, &x);
 	game->img.key = mlx_xpm_file_to_image(
-			game->mlx, "assets/key.xpm", x, x);
+			game->mlx, "assets/key.xpm", &x, &x);
 	game->img.exit = mlx_xpm_file_to_image(
-			game->mlx, "assets/exit.xpm", x, x);
+			game->mlx, "assets/exit.xpm", &x, &x);
 	game->img.enemy = mlx_xpm_file_to_image(
-			game->mlx, "assets/enemy.xpm", x, x);
-	load_numbers(game, x);
+			game->mlx, "assets/enemy.xpm", &x, &x);
+	load_numbers(game, &x);
 	game->player.keys = 0;
 	game->player.moves = 0;
 	load_enemies(game);
@@ -97,7 +99,6 @@ static int	args_invalid(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_game	game;
-	int	x;
 
 	if (args_invalid(ac, av) || !parse_map(av[1], &game))
 		return (0);
@@ -106,5 +107,5 @@ int	main(int ac, char **av)
 		printf("Error\nNo valid path");
 		return (0);
 	}
-	init_game(&game, &x);
+	init_game(&game);
 }

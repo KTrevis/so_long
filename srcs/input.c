@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/12 12:04:49 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 11:59:31 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,18 @@ void	quit_game(t_game *game)
 	exit(0);
 }
 
-int	handle_key(int keycode, t_game *game)
+int	move_player(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
 		quit_game(game);
 	else if (keycode == KEY_W)
-		game->player.y -= 32;
+		game->player.y -= IMG_SIZE;
 	else if (keycode == KEY_S)
-		game->player.y += 32;
+		game->player.y += IMG_SIZE;
 	else if (keycode == KEY_A)
-		game->player.x -= 32;
+		game->player.x -= IMG_SIZE;
 	else if (keycode == KEY_D)
-		game->player.x += 32;
+		game->player.x += IMG_SIZE;
 	else
 		return (0);
 	return (1);
@@ -66,7 +66,7 @@ void	display_moves(t_game *game)
 	{
 		mlx_put_image_to_window(
 			game->mlx, game->window, game->img.numbers[str[i] - '0'], x, 0);
-		x += 32;
+		x += IMG_SIZE;
 		i++;
 	}
 	free(str);
@@ -74,18 +74,18 @@ void	display_moves(t_game *game)
 
 int	handle_input(int keycode, t_game *game)
 {
-	int	old_coordinates[2];
+	t_coords	old_coords;
 
-	old_coordinates[0] = game->player.x;
-	old_coordinates[1] = game->player.y;
-	if (!handle_key(keycode, game))
+	old_coords.x = game->player.x;
+	old_coords.y = game->player.y;
+	if (!move_player(keycode, game))
 		return (0);
-	wall_collision(game, old_coordinates);
-	key_collision(game, old_coordinates);
+	wall_collision(game, old_coords);
+	key_collision(game);
+	draw_target(game, old_coords.x, old_coords.y, "floor");
 	enemy_collision(game);
-	draw_target(game, old_coordinates[0], old_coordinates[1], "floor");
-	if (game->map[old_coordinates[1] / 32][old_coordinates[0] / 32] == 'E')
-		draw_target(game, old_coordinates[0], old_coordinates[1], "exit");
+	if (game->map[old_coords.y / IMG_SIZE][old_coords.x / IMG_SIZE] == 'E')
+		draw_target(game, old_coords.x, old_coords.y, "exit");
 	draw_target(game, game->player.x, game->player.y, "player");
 	display_moves(game);
 	return (0);
