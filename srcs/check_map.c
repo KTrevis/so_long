@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 13:43:01 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:27:37 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	check_rectangle(char **map)
 {
-	int	i;
-	size_t	n;
+	int			i;
+	size_t		n;
 
 	i = 0;
 	n = ft_strlen(map[i]);
