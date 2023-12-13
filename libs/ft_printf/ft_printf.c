@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:05:45 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/11/13 10:55:02 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:43:16 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	ft_printf(const char *str, ...)
 	int			len;
 	va_list		args;
 
+	if (!str)
+		return (-1);
 	len = 0;
 	va_start(args, str);
 	while (*str)
