@@ -16,7 +16,14 @@ $(NAME):
 	make -C libs/mlx
 	make -C libs/ft_printf
 	make -C libs/libft
-	cc $(SRCS) -g3 -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
+ifdef bonus
+	cc $(CFLAGS) $(SRCS) -D BONUS=1 -g3 -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
+else
+	cc $(CFLAGS) $(SRCS) -g3 -I includes/ -L libs/mlx -l mlx -I mlx -lXext -lX11 -lm -lz -o $(NAME) $(DEPS)
+endif
+
+bonus:
+	make bonus=1
 
 clean:
 	make -C libs/mlx clean
