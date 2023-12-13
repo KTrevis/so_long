@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:33:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 11:55:56 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:06:37 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void	init_game(t_game *game)
 {
 	int	x;
 
+	load_enemies(game);
 	game->mlx = mlx_init();
 	game->window = mlx_new_window(game->mlx, ft_strlen(game->map[0]) * IMG_SIZE,
 			map_height(game->map) * IMG_SIZE, "");
@@ -59,7 +60,6 @@ static void	init_game(t_game *game)
 	load_numbers(game, &x);
 	game->player.keys = 0;
 	game->player.moves = 0;
-	load_enemies(game);
 	draw_map(game);
 	mlx_hook(game->window, KeyPress, KeyPressMask, handle_input, game);
 	mlx_hook(game->window, 33, 131072, (void *)quit_game, game);

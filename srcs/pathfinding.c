@@ -6,12 +6,10 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:50:31 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 16:02:13 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:05:30 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
 #include "so_long.h"
 
 static void	norm_hack(t_coords *tmp, t_coords spawn, int flag)
