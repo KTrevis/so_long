@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 12:51:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 12:17:28 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:30:38 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@
 # include "libft.h"
 # include "mlx.h"
 # include "fcntl.h"
+
+# ifndef BONUS
+#  define BONUS 0
+# endif
 
 typedef struct s_img {
 	void	*wall;

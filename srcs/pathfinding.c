@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 11:50:31 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 12:05:30 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:43:47 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ int	impossible_map(char *path, t_game *game)
 	t_coords		*coords;
 	t_coords		player_spawn;
 	t_coords		map_size;
-	int				i;
+	unsigned int				i;
 
 	i = 0;
+	map = NULL;
 	player_spawn = get_spawn(game->map);
 	map_size = get_map_size(game->map);
 	coords = objectives_coords(game);

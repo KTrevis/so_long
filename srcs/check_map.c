@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:09:20 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/11 13:54:47 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:43:01 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	check_rectangle(char **map)
 {
 	int	i;
-	int	n;
+	size_t	n;
 
 	i = 0;
 	n = ft_strlen(map[i]);
@@ -39,6 +39,8 @@ int	character_invalid(char c)
 
 	i = 0;
 	valids = "01CPEVH";
+	if (!BONUS)
+		valids = "01CPE";
 	while (valids[i])
 	{
 		if (valids[i] == c)

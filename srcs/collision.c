@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:16:44 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 11:58:53 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:45:00 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ void	move_enemy(t_game *game, t_enemy *enemy)
 
 void	enemy_collision(t_game *game)
 {
-	char	collider;
-	int		i;
+	unsigned int		i;
 
 	i = 0;
-	collider = game->map[game->player.y / IMG_SIZE][game->player.x / IMG_SIZE];
 	while (i < game->nbr_enemies)
 	{
 		if (game->player.y == game->enemies[i].y

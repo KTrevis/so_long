@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:59:26 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/08 17:09:24 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 13:44:39 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ t_coords	get_spawn(char **map)
 	t_coords	player_spawn;
 
 	i = 0;
+	player_spawn.x = 0;
+	player_spawn.y = 0;
 	while (map[i])
 	{
 		j = 0;

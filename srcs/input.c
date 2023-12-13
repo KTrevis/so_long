@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:01:07 by ketrevis          #+#    #+#             */
-/*   Updated: 2023/12/13 11:59:31 by ketrevis         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:32:05 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,13 @@ int	handle_input(int keycode, t_game *game)
 	wall_collision(game, old_coords);
 	key_collision(game);
 	draw_target(game, old_coords.x, old_coords.y, "floor");
-	enemy_collision(game);
+	if (BONUS)
+	{
+		enemy_collision(game);
+		display_moves(game);
+	}
 	if (game->map[old_coords.y / IMG_SIZE][old_coords.x / IMG_SIZE] == 'E')
 		draw_target(game, old_coords.x, old_coords.y, "exit");
 	draw_target(game, game->player.x, game->player.y, "player");
-	display_moves(game);
 	return (0);
 }
